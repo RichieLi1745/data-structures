@@ -68,4 +68,40 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+  it('should execute a callback on each node in the graph where the callback has multiple edges added to each', function() {
+    var connectToMultiple = function(item) {
+      graph.addEdge(item, 5);
+      graph.addEdge(item, 6);
+      graph.addEdge(item, 7);
+    };
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(3);
+    graph.addNode(4);
+    graph.addNode(5);
+    graph.addNode(6);
+    graph.addNode(7);
+    graph.forEachNode(connectToMultiple);
+    expect(graph.hasEdge(1, 5)).to.equal(true);
+    expect(graph.hasEdge(2, 5)).to.equal(true);
+    expect(graph.hasEdge(3, 5)).to.equal(true);
+    expect(graph.hasEdge(4, 5)).to.equal(true);
+    expect(graph.hasEdge(5, 5)).to.equal(true);
+    expect(graph.hasEdge(6, 5)).to.equal(true);
+    expect(graph.hasEdge(7, 5)).to.equal(true);
+    expect(graph.hasEdge(1, 6)).to.equal(true);
+    expect(graph.hasEdge(2, 6)).to.equal(true);
+    expect(graph.hasEdge(3, 6)).to.equal(true);
+    expect(graph.hasEdge(4, 6)).to.equal(true);
+    expect(graph.hasEdge(5, 6)).to.equal(true);
+    expect(graph.hasEdge(6, 6)).to.equal(true);
+    expect(graph.hasEdge(7, 6)).to.equal(true);
+    expect(graph.hasEdge(1, 7)).to.equal(true);
+    expect(graph.hasEdge(2, 7)).to.equal(true);
+    expect(graph.hasEdge(3, 7)).to.equal(true);
+    expect(graph.hasEdge(4, 7)).to.equal(true);
+    expect(graph.hasEdge(5, 7)).to.equal(true);
+    expect(graph.hasEdge(6, 7)).to.equal(true);
+    expect(graph.hasEdge(7, 7)).to.equal(true);
+  })
 });

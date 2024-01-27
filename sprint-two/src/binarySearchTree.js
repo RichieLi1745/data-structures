@@ -17,13 +17,6 @@ BinarySearchTree.prototype.insert = function(value) {
 
   var greater = newTree.value > this.value;
 
-  // greater = true when the number to be inserted is greater than the current node
-  // and false otherwise
-
-
-  // recursive case:
-  //check if greater
-  //if right is null
   if (greater) {
 
     if (this.right === null) {
@@ -73,9 +66,8 @@ BinarySearchTree.prototype.contains = function(value) {
 
 BinarySearchTree.prototype.depthFirstLog = function(func) {
 
-  //call on the func on the value
   func(this.value);
-  //call on its children
+
   if (this.left !== null) {
     this.left.depthFirstLog(func);
   }
